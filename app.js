@@ -1,7 +1,14 @@
+var path = require('path')
 const express = require('express')
 const app = express();
 const env = require('dotenv')
 const mongoose = require('mongoose')
+const cors = require('cors')
+const cookieParser = require("cookie-parser");
+const checkAdmin = require('./routes/adminCheck')
+const User = require('./models/User')
+
+app.use(cookieParser());
 
 env.config()
 app.use(express.json())
@@ -10,26 +17,46 @@ const routeConverter = require('./routes/converter')
 app.use('/user', routeAutenticazione)
 app.use('/converter', routeConverter)
 
-//online
-// mongoose.connect(process.env.DB,  { useNewUrlParser: true, useUnifiedTopology: true  }  , () => console.log('Connected to MongoDB.'))
+//settaggio view engine
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'ejs');
+app.engine('html', require('ejs').renderFile);
 
-//offline
-mongoose.connect('mongodb://localhost/users')
-let db = mongoose.connection
 
-db.once('open', function () {
-    console.log('Connected to MongoDB.')
-})
-db.on('error', function (err) {
-    console.log(err)
-})
+//body parser per recuperare i dati passati in richiesta
 
+app.use(express.static(path.join(__dirname, 'public')))
+app.use(cors());
+
+mongoose.connect(process.env.DB,  { useNewUrlParser: true, useUnifiedTopology: true  }  , () => console.log('Connected to MongoDB.'))
 
 app.get('/', function (req, res) {
-    res.send('Hello, welcome')
+    res.render('index.html');
+})
+
+app.get('/loginView', function(req, res) {
+    res.render('loginView.html')
+})
+
+app.get('/registerView', function(req, res) {
+    res.render('registerView.html')
+})
+
+app.get('/manage', checkAdmin, function(req, res) {
+    res.render('manage.html')
+})
+
+app.get('/getNodes', checkAdmin, function(req, res){
+    User.find({_id: {$ne: process.env.ADMINID}}, 
+        (err,result) => {
+            if(err) {console.log(err)}
+            res.json(result)
+        }
+        );
 })
 
 //settaggio porta
 app.listen(3001, () => console.log('Server started on port 3000.'));
+
 
 

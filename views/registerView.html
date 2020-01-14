@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" />
+    <title>Register</title>
+</head>
+
+<body>
+    <div class="home_titolo">Registrati</div>
+    <form class="form"  method="POST" id="signupForm">
+        <p class="spazioCampi">  
+              <input class="widthChanger paddingChanger borderChanger" name="name" type="text" placeholder="Nome" required id="name" minlength="3" tabindex="1">
+        </p>
+        <p class="spazioCampi">   
+            <input class="widthChanger paddingChanger borderChanger" name="email" id="emailField" type="email" placeholder="E-mail" tabindex="2">
+        </p>
+
+        <p class="spazioCampi">  
+            <input class="widthChanger paddingChanger borderChanger psw" name="password" type="password" id="password" placeholder="Password" tabindex="4">
+        </p>
+
+
+
+        <p class="spazioCampi">
+            <input class="widthChanger paddingChanger" type="submit" id="signup-submit" value="Crea l'account" tabindex="6">
+        </p>
+    </form>
+
+    </div>
+</body>
+<script src="register.js"></script>
+
+</html>

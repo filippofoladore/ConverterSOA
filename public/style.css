@@ -1,0 +1,182 @@
+body {
+  background-color: #defbff;
+  box-sizing: border-box;
+  font-family: "Poppins";
+  color: #232323;
+}
+
+.home_titolo {
+  display: table;
+  font-size: 60px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.home_container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: space-evenly;
+}
+
+.it_login {
+  margin-top: 30px;
+  width: 500px;
+  font-size: 45px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.it_register {
+  margin-top: 30px;
+  width: 500px;
+  font-size: 45px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.it_converter {
+  margin-top: 30px;
+  width: 500px;
+  font-size: 45px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.it_manage {
+  margin-top: 30px;
+  width: 500px;
+  font-size: 45px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#classlogout {
+  /* float: right; */
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 50px;
+  margin-right: 25px;
+  text-decoration: none !important;
+  font-size: 20px;
+}
+
+#btn_home_ins,
+#btn_home_int {
+  width: 30px;
+  height: auto;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px 23px;
+  font-size: 25px;
+  color: #2e3830;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(116, 221, 116);
+  transition: all 0.25s;
+}
+
+#btn_home_ins:hover,
+#btn_home_int:hover {
+  background-color: rgb(35, 255, 71);
+}
+
+.form {
+  background-color: #defbff;
+  padding: 1.4em;
+  font-family: "Poppins";
+}
+
+.form .spazioCampi {
+  position: relative;
+  margin: 1.4em 0;
+}
+
+.form .spazioCampi:first-child {
+  margin-top: 50px;
+}
+
+.form .spazioCampi:last-child {
+  margin-bottom: 0;
+}
+
+.form label {
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+
+.form input {
+  margin: 0;
+  padding: 0;
+  border-radius: 0.25em;
+}
+
+.form input.widthChanger {
+  width: 100%;
+}
+
+.form input.paddingChanger {
+  padding: 12px 20px 12px 50px;
+}
+
+.form input.borderChanger {
+  border: 1px solid #d2d8d8;
+  appearance: none;
+}
+
+.form input.borderChanger:focus {
+  /* border-color: #343642; */
+  border-color: rgb(116, 221, 166);
+  box-shadow: 0 0 5px rgba(52, 54, 66, 0.1);
+  outline: none;
+}
+
+.form input[type="submit"] {
+  padding: 16px 0;
+  cursor: pointer;
+  background: rgb(116, 221, 116);
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  appearance: none;
+}
+
+.form input[type="submit"]:hover {
+  background: rgb(35, 255, 71);
+}
+
+.form .hidePassword {
+  display: inline-block;
+  position: absolute;
+  text-decoration: none;
+  right: 0;
+  top: 50%;
+  padding: 6px 15px;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #343642;
+  border-left: 1pt solid #d2d8d8;
+}
+
+.manageResult {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.userManage {
+  padding: 15px;
+  box-shadow: 7px 7px 10px 0px rgba(35,35,35,0.22);
+  background-color: #3cc47c;
+  margin-top: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}

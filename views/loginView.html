@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+      <link rel="stylesheet" type="text/css" href="style.css" />
+      <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+            integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+            crossorigin="anonymous" />
+      <title>Login</title>
+</head>
+
+<body>
+      <div class="home_titolo">Login</div>
+      <form class="form" method="POST" id="loginForm">
+            <p class="spazioCampi">
+                  <input class="widthChanger paddingChanger borderChanger" name="Email" type="text" placeholder="Email"
+                        tabindex="1" id="emaillogin">
+            </p>
+
+            <p class="spazioCampi">
+                  <input class="widthChanger paddingChanger borderChanger" name="password" type="password"
+                        placeholder="Password" tabindex="2" id="passwordlogin">
+                  <a href="#0" class="hidePassword"><i class="eye fas fa-eye"></i></a>
+            </p>
+
+            <p class="spazioCampi">
+                  <input class="widthChanger" type="submit" value="Login" tabindex="3" id="login-submit">
+            </p>
+      </form>
+
+      </div>
+</body>
+<script>
+      $('.hidePassword').on('click', function () {
+            var $this = $(this),
+                  $psw = $this.prev('input');
+            ('password' == $psw.attr('type')) ? $psw.attr('type', 'text') : $psw.attr('type',
+                  'password');
+            $('.eye').toggleClass('fa-eye fa-eye-slash');
+      });
+</script>
+<script src="login.js"></script>
+
+</html>
