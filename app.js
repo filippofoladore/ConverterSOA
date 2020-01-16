@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 const checkAdmin = require('./routes/adminCheck')
 const User = require('./models/User')
 
+
 app.use(cookieParser());
 
 env.config()

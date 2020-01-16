@@ -1,47 +1,69 @@
 <!DOCTYPE html>
 <html lang="it">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Poppins"
-      rel="stylesheet"
-    />
 
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
-      crossorigin="anonymous"
-    />
-    <title>Converter</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
 
-  <body>
-    <div class="home_titolo">Converter</div>
-    <div id="classlogout">
-      <a href="/user/logout">Logout</a>
-    </div>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" />
+  <title>Converter</title>
+</head>
 
-    <div class="container">
-      <select name="" id="">
-        <option value="doctopdf">Word to Pdf</option>
-        <option value="pdftodoc">Pdf to Doc</option>
-        <option value="pdftodoc">Excel to Pdf</option>
-        <option value="pdftodoc">Unisci Pdf</option>
-        <option value="pdftodoc">Unisci Word</option>
-        <option value="pdftodoc">Separa Pdf</option>
-        <option value="pdftodoc">Separa Word</option>
-      </select>
-      <br><br><br>
-      <form method='post' action= '/converter/doctopdf' enctype="multipart/form-data" >
-        <input type='file' id='fileUploaded' name="upload">
-        <input type='submit' id="uploadForm" value="Carica">
-      </form>
-    </div>
+<body>
+  <div class="home_titolo">Converter</div>
+  <div id="classlogout">
+    <a href="/user/logout">Logout</a>
+  </div>
+
+  <div class="actionContainer">
+
+    <form method="post" action="/converter/doctopdf" enctype="multipart/form-data" class="actionItem">
+      <h2>1. Word to Pdf</h2>
+      <input type="file" id="fileUploaded" name="upload" />
+      <input type='submit' id="uploadForm" value="Carica">
+    </form>
     
-  </body>
-  <script src="converterCode.js"></script>
+    <form method="post" action="/converter/pdftodoc" enctype="multipart/form-data" class="actionItem">
+      <h2>2. Pdf to Doc</h2>
+      <input type="file" id="fileUploaded" name="upload" />
+      <input type='submit' id="uploadForm" value="Carica">
+    </form>
+
+    <form method="post" action="/converter/xlsxtopdf" enctype="multipart/form-data" class="actionItem">
+      <h2>3. Excel to Pdf</h2>
+      <input type="file" id="fileUploaded" name="upload" />
+      <input type='submit' id="uploadForm" value="Carica">
+    </form>
+
+    <form method="post" action="/converter/mergepdf" enctype="multipart/form-data" class="actionItem">
+      <h2>4. Unisci Pdf</h2>
+      <input type="file" id="fileUploaded" name="upload" multiple/>
+      <input type='submit' id="uploadForm" value="Carica">
+    </form>
+
+    <form method="post" action="/converter/mergedoc" enctype="multipart/form-data" class="actionItem">
+      <h2>5. Unisci Word</h2>
+      <input type="file" id="fileUploaded" name="upload" multiple/>
+      <input type='submit' id="uploadForm" value="Carica">
+    </form>
+
+    <form method="post" action="/converter/pptxtopdf" enctype="multipart/form-data" class="actionItem">
+      <h2>6. PowerPoint to Pdf</h2>
+      <input type="file" id="fileUploaded" name="upload" />
+      <input type='submit' id="uploadForm" value="Carica">
+    </form>
+
+    <form method="post" action="/converter/pdftopptx" enctype="multipart/form-data" class="actionItem">
+      <h2>7. Pdf to PowerPoint</h2>
+      <input type="file" id="fileUploaded" name="upload" />
+      <input type='submit' id="uploadForm" value="Carica">
+    </form>
+
+  </div>
+</body>
+
 </html>
