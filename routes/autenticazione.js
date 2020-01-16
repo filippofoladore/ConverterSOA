@@ -38,7 +38,8 @@ router.post('/register', async (req, res) => {
     const user = new User({
         name: req.body.name,
         email: req.body.email,
-        password: hashPassword
+        password: hashPassword,
+        admin: false
     })
     try {
         const newUser = await user.save()
@@ -56,14 +57,14 @@ router.post('/login', async (req, res) => {
     catch (err) { return res.status(400).send(err.details[0].message) }
 
     //check admin
-    if (req.body.email == process.env.ADMINEMAIL && req.body.password == process.env.ADMINPASSWORD) {
-        const user = await User.findOne({ email: req.body.email })
-        const token = jwt.sign({ _id: user._id, admin: false }, process.env.TOKEN, { expiresIn: '7200000' })
-        res.cookie('admin', true, { expires: new Date(Date.now() + 7200000), httpOnly: false });
-        res.cookie('token', token, { expires: new Date(Date.now() + 7200000), httpOnly: false })
-        res.cookie('logged', true, { expires: new Date(Date.now() + 7200000), httpOnly: false });
-        res.redirect(200, 'http://localhost:3001/')
-    } else {
+    // if (req.body.email == process.env.ADMINEMAIL && req.body.password == process.env.ADMINPASSWORD) {
+    //     const user = await User.findOne({ email: req.body.email })
+    //     const token = jwt.sign({ _id: user._id, admin: false }, process.env.TOKEN, { expiresIn: '7200000' })
+    //     res.cookie('token', token, { expires: new Date(Date.now() + 7200000), httpOnly: false })
+    //     res.cookie('logged', true, { expires: new Date(Date.now() + 7200000), httpOnly: false });
+    //     res.cookie('userID', user._id.toString(), { expires: new Date(Date.now() + 7200000), httpOnly: false })
+    //     res.redirect(200, 'http://localhost:3001/')
+    // } else {
         //controlla email
         const user = await User.findOne({ email: req.body.email })
         if (!user) return res.status(400).send("Email o password non corretta.")
@@ -79,18 +80,18 @@ router.post('/login', async (req, res) => {
         //cookie valido per 20secondi
         //res.cookie('token', token ,{ expires: new Date(Date.now() + 20000), httpOnly: true })
         //cookie valido per 2ore
-        res.cookie('admin', false, { expires: new Date(Date.now() + 7500000), httpOnly: false });
+        
         res.cookie('token', token, { expires: new Date(Date.now() + 7500000), httpOnly: false })
         res.cookie('logged', true, { expires: new Date(Date.now() + 7500000), httpOnly: false });
+        res.cookie('userID', user._id.toString(), { expires: new Date(Date.now() + 7200000), httpOnly: false })
         res.redirect(200, 'http://localhost:3001/')
-    }
 
 })
 
 router.get('/logout', function(req, res){
-    res.clearCookie('admin')
     res.clearCookie('token')
     res.clearCookie('logged')
+    res.clearCookie('userID')
     res.redirect('http://localhost:3001')
 })
 

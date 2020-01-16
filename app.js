@@ -56,6 +56,16 @@ app.get('/getNodes', checkAdmin, function(req, res){
         );
 })
 
+app.post('/getAdminValue', function(req, res){
+    User.findOne({"_id": req.body._id}, 'admin', function(err, doc){
+        if(err) {
+            res.send("Qualcosa è andato storto")
+        } else {
+            res.send(doc)
+        }
+    })
+})
+
 //settaggio porta
 app.listen(3001, () => console.log('Server started on port 3000.'));
 
