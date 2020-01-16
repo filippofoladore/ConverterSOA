@@ -2,9 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     getAdminState();
 })
 
-var loggedCookie = getLoggedValue('logged')
-var adminCookie = getLoggedValue('admin')
-
+var loggedCookie = getCookieValue('logged')
 
 if (loggedCookie == 'true') {
     document.getElementById('loginItem').style.display = 'none'
@@ -21,7 +19,7 @@ if (loggedCookie == 'true') {
 
 }
 
-function getLoggedValue(name) {
+function getCookieValue(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     if (match) {
         return match[2];
@@ -32,13 +30,12 @@ function getLoggedValue(name) {
 }
 
 function getAdminState() {
-    var value = getLoggedValue('userID')
-    var data = {_id: value}
-    var xhr = new XMLHttpRequest()
+    let value = getCookieValue('userID')
+    let data = {_id: value}
+    let xhr = new XMLHttpRequest()
     xhr.onreadystatechange = () => {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            var admin = (JSON.parse(xhr.response)).admin
-            console.log(typeof(admin))
+            let admin = (JSON.parse(xhr.response)).admin
             if (!admin) {
                 document.getElementById('manageItem').style.display = 'none'
             } else{

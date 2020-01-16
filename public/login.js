@@ -7,19 +7,16 @@ loginClick.addEventListener('click', function (e) {
         password: document.getElementById('passwordlogin').value,
     }
     data = JSON.stringify(data)
-    var xhr;
-    xhr = new XMLHttpRequest();
+    var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            console.log(xhr.responseText);
             setTimeout(() => {
-                 window.location.href = 'http://localhost:3001/'
+                window.location.href = 'http://localhost:3001/'
             }, 1500);
-           
+
         }
     }
     xhr.open('POST', '/user/login', true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(data);
-
 })

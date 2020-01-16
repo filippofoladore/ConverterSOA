@@ -8,14 +8,13 @@ signupClick.addEventListener('click', function (e) {
         password: document.getElementById('password').value,
     }
     data = JSON.stringify(data)
-    var xhr;
-    xhr = new XMLHttpRequest();
+    var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
         if (xhr.readyState == 4 && xhr.status == 200) {
             console.log(xhr.responseText);
             setTimeout(() => {
                 window.location.href = 'http://localhost:3001/loginView'
-           }, 1500);
+            }, 1500);
         }
     }
     xhr.open('POST', '/user/register', true);

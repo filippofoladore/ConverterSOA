@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var xhr
-    xhr = new XMLHttpRequest()
+    var xhr  = new XMLHttpRequest()
     xhr.onreadystatechange = () => {
         if (xhr.readyState == 4 && xhr.status == 200) {
             displayNodes(xhr.response);

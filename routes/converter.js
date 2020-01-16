@@ -222,8 +222,8 @@ router.post('/pdftopptx', multipartMiddleware, function (req, res) {
             })
         }, 2000);
     }
-    apiInstance.convertDocumentPdfToPptx(inputFile, post);
 
+    apiInstance.convertDocumentPdfToPptx(inputFile, post);
 })
 
 
