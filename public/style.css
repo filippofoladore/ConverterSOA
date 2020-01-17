@@ -231,3 +231,9 @@ body {
   background: #e5322d ;
 }
 
+@media screen and (max-width: 530px) {
+  .home_titolo {
+    margin-top: 55px;
+    font-size: 50px;
+  }
+}
