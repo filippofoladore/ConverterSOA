@@ -19,7 +19,7 @@ const loginValidation = Joi.object({
 
 router.post('/register', async (req, res) => {
     //validazione
-    try { const { err } = await registerValidation.validateAsync(req.body);}
+    try { const { err } = await registerValidation.validateAsync(req.body); }
     catch (err) { return res.status(400).send(err.details[0].message) }
 
     //check se user esiste già
@@ -47,7 +47,7 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     //validazione
-    try { const { err } = await loginValidation.validateAsync(req.body);}
+    try { const { err } = await loginValidation.validateAsync(req.body); }
     catch (err) { return res.status(400).send(err.details[0].message) }
 
     //controlla email
@@ -62,13 +62,13 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN, { expiresIn: '7200000' })
     //token header per il test in Postman
     res.header('token', token)
-    
+
     //cookie valido per 20secondi
     //res.cookie('token', token ,{ expires: new Date(Date.now() + 20000), httpOnly: true })
-    
+
     //cookie valido per 2ore
-    res.cookie('token', token, { expires: new Date(Date.now() + 7500000), httpOnly: false })
-    res.cookie('logged', true, { expires: new Date(Date.now() + 7500000), httpOnly: false });
+    res.cookie('token', token, { expires: new Date(Date.now() + 7200000), httpOnly: false })
+    res.cookie('logged', true, { expires: new Date(Date.now() + 7200000), httpOnly: false });
     res.cookie('userID', user._id.toString(), { expires: new Date(Date.now() + 7200000), httpOnly: false })
     res.redirect(200, 'http://localhost:3001/')
 
